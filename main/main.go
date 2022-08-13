@@ -18,4 +18,16 @@ func main() {
 	//fmt.Printf("test: %v", testPtr())
 
 	fmt.Printf(string(testFunction(1, 2)))
+
+	r1, r2 := getSumAndSub(1, 2)
+
+	fmt.Printf(r1)
+	fmt.Printf(r2)
+
+}
+
+func getSumAndSub(n1 int, n2 int) (int ,int) {
+	sum := n1 + n2
+	sub := n1 - n2
+	return sum, sub
 }
