@@ -71,9 +71,40 @@ func main() {
 	//输出码值:97 97 9 20320
 	fmt.Println(r, s, t, u)
 	//格式化:a a      你
-	fmt.Printf("%c %c %c %c", r, s, t, u)
+	fmt.Printf("%c %c %c %c \n", r, s, t, u)
 
 	//溢出 constant 27979 overflows byte !
 	//var v byte = '测'
 	//fmt.Printf("%c", v)
+
+	//bool
+	var v = false
+	println(v)
+	fmt.Printf("bool占用字节：%d \n", unsafe.Sizeof(v))
+
+	//string
+	var address = "aaa"
+	var address2 = `aaa
+					123`
+	fmt.Println(address)
+	fmt.Println(address2)
+
+	address = "111" + "123" + "222" +
+		"123" + "456"
+	fmt.Println(address)
+
+	//转换
+	var a int = 123
+	var b int16 = int16(a)
+	var c float32 = float32(int16(a))
+	fmt.Println(a, b, c)
+
+	//范围大转范围小，溢出
+	//var d int64 = 123456789013456756787654
+	//var e int = int(d)
+	//fmt.Println(d, e)
+
+	var str string
+	str = fmt.Sprintf("%d", a)
+	fmt.Println("str=", str)
 }
