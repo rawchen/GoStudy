@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"unsafe"
 )
 
@@ -107,4 +108,7 @@ func main() {
 	var str string
 	str = fmt.Sprintf("%d", a)
 	fmt.Println("str=", str)
+
+	str = strconv.FormatInt(int64(a), 10)
+	fmt.Println(str)
 }
