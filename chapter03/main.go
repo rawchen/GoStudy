@@ -111,4 +111,24 @@ func main() {
 
 	str = strconv.FormatInt(int64(a), 10)
 	fmt.Println(str)
+
+	var num5 int = 456
+	str = strconv.Itoa(num5)
+
+	var str2 string = "true"
+	var b2 bool
+	//返回两值 bool error
+	b2, _ = strconv.ParseBool(str2)
+	fmt.Printf("b type %T b=%v \n", b2, b2)
+
+	var str3 string = "1234590"
+	var n1 int64
+	n1, _ = strconv.ParseInt(str3, 10, 64)
+	fmt.Printf("n1 type %T n1=%v \n", n1, n1)
+
+	var str4 string = "hhh"
+	var b3 bool
+	//返回两值 bool error
+	b3, _ = strconv.ParseBool(str4)
+	fmt.Printf("b3 type %T b3=%v \n", b3, b3)
 }
