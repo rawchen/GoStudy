@@ -14,4 +14,9 @@ func main() {
 	fmt.Printf("ptr=%v \n", ptr)
 	fmt.Printf("ptr的地址=%v \n", &ptr)
 	fmt.Printf("ptr指向的值=%v \n", *ptr)
+
+	fmt.Printf("i的地址=%v \n", &i)
+
+	*ptr = 20
+	fmt.Println("i的值修改为=", i)
 }
