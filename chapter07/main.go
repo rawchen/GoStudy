@@ -22,4 +22,15 @@ func main() {
 
 	n1++
 	fmt.Println(n1)
+
+	//关系运算
+	var t1 int = 9
+	var t2 int = 8
+	fmt.Println(t1 == t2)
+	fmt.Println(t1 != t2)
+	fmt.Println(t1 > t2)
+	fmt.Println(t1 | t2)
+	fmt.Println(t1 & t2)
+	fmt.Println(t1 << t2)
+	fmt.Println(t1 >> 1)
 }
