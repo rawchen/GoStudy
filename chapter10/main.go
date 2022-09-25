@@ -56,4 +56,33 @@ func main() {
 	default:
 		fmt.Println("no")
 	}
+
+	for i := 0; i < 10; i++ {
+		// 0-9
+		fmt.Println(i)
+	}
+
+	fmt.Println("==============")
+	for i := 1; i <= 10; i++ {
+		// 1-10
+		fmt.Println(i)
+	}
+
+	fmt.Println("//////////////")
+	j := 1
+	for j <= 10 {
+		fmt.Println(j)
+		j++
+	}
+
+	fmt.Println("!!!!!!!!!!!!!!!")
+	k := 1
+	for {
+		if k <= 10 {
+			fmt.Println(k)
+		} else {
+			break
+		}
+		k++
+	}
 }
