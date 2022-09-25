@@ -85,4 +85,30 @@ func main() {
 		}
 		k++
 	}
+
+	fmt.Println("ggggggggggggggggg")
+	// 字符串遍历
+	// 传统遍历中文乱码，会按照字节遍历！
+	var txt string = "hello world啊"
+	for i := 0; i < len(txt); i++ {
+		//fmt.Println(txt[i])
+		fmt.Printf("%c \n", txt[i])
+	}
+
+	fmt.Println("ooooooooooooooooo")
+	// 字符串遍历
+	// for-range按照字符遍历，所以不会乱码。
+	var txt2 string = "hello world啊"
+	for index, val := range txt2 {
+		fmt.Printf("index = %d, val = %c \n", index, val)
+	}
+
+	fmt.Println("zzzzzzzzzzzzzzzzz")
+	// 字符串遍历
+	// 切片解决传统遍历中文乱码
+	var txt3 string = "hello world哈哈哈哈呵呵呵"
+	txt4 := []rune(txt3)
+	for i := 0; i < len(txt); i++ {
+		fmt.Printf("%c \n", txt4[i])
+	}
 }
