@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
 	var name int = 10
@@ -76,6 +80,7 @@ func main() {
 	}
 
 	fmt.Println("!!!!!!!!!!!!!!!")
+	// go语言无do-while，使用for{break}实现
 	k := 1
 	for {
 		if k <= 10 {
@@ -111,4 +116,23 @@ func main() {
 	for i := 0; i < len(txt); i++ {
 		fmt.Printf("%c \n", txt4[i])
 	}
+
+	var count int = 0
+	for {
+		rand.Seed(time.Now().UnixNano())
+		n := rand.Intn(100) + 1
+		count++
+		if n == 99 {
+			break
+		}
+	}
+	fmt.Println("count = ", count)
+
+	// goto
+	fmt.Println("OK1")
+	goto label1
+	fmt.Println("OK2")
+	fmt.Println("OK3")
+label1:
+	fmt.Println("OK4")
 }
