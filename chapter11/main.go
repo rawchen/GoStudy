@@ -31,3 +31,9 @@ func sum(n1 int, args ...int) int {
 	}
 	return sum
 }
+
+// 初始化函数
+// 每个源文件可包含一个init函数，会在main函数前自动执行
+func init() {
+	fmt.Println("init")
+}
