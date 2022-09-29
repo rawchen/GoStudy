@@ -13,7 +13,10 @@ func main() {
 	test01(&num)
 
 	result := sum(1, 2, 3, 5)
-	fmt.Println(result)
+	fmt.Println("1 + (2 + 3 + 5)可变参数列表 = ", result)
+
+	// 测试另外包的初始化
+	fmt.Println("utils包的变量Temp被初始化为：", utils.Temp)
 }
 
 func test01(n1 *int) {
