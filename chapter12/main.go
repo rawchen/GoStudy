@@ -28,10 +28,16 @@ func main() {
 	fmt.Println(result03)
 
 	// 闭包
+	//f := addUpper()
+	//fmt.Println(f(1)) // 11
+	//fmt.Println(f(2)) // 13
+	//fmt.Println(f(3)) // 16
+
 	f := addUpper()
 	fmt.Println(f(1)) // 11
 	fmt.Println(f(2)) // 13
-	fmt.Println(f(3)) // 16
+	fmt.Println(f(2)) // 15
+	fmt.Println(f(3)) // 18
 }
 
 func addUpper() func(int) int {
