@@ -46,4 +46,24 @@ func main() {
 	for i, name := range names {
 		fmt.Println("索引为 =", i, "姓名为 =", name)
 	}
+
+	// 默认情况下是值传递，会进行值拷贝。
+	arr05 := [3]int{1, 2, 3}
+	test01(arr05)
+	fmt.Println(arr05) // [1 2 3]
+
+	arr06 := [3]int{1, 2, 3}
+	test02(&arr06)
+	fmt.Println(arr06) // [88 2 3]
+
+}
+
+// 值传递测试
+func test01(arr [3]int) {
+	arr[0] = 88
+}
+
+// 引用传递
+func test02(arr *[3]int) {
+	(*arr)[0] = 88
 }
