@@ -49,4 +49,27 @@ func main() {
 	fmt.Println(slice06)
 	fmt.Println(slice07)
 
+	// 因为切片是引用底层数组，所以一改都改
+	slice07[0] = 123
+	fmt.Println(slice07) // [123, 30]
+	fmt.Println(slice04) // [123, 30, 40]
+
+	// 动态追加
+	var slice08 []int = []int{1, 2, 3}
+	slice09 := append(slice08, 4)
+	fmt.Println("slice08 =", slice08) // [1 2 3]
+	fmt.Println("slice09 =", slice09) // [1 2 3 4]
+
+	slice10 := append(slice09, slice09...)
+	fmt.Println("slice10 =", slice10) // [1 2 3 4 1 2 3 4]
+
+	// 拷贝
+	var slice11 = []int{1, 2, 3}
+	slice12 := make([]int, 5)
+	fmt.Println("slice11 =", slice11) // [1 2 3]
+	fmt.Println("slice12 =", slice12) // [0 0 0 0 0]
+	copy(slice12, slice11)
+	fmt.Println("slice11 =", slice11) // [1 2 3]
+	fmt.Println("slice12 =", slice12) // [1 2 3 0 0]
+
 }
