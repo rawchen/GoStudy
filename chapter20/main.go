@@ -72,4 +72,13 @@ func main() {
 	fmt.Println("slice11 =", slice11) // [1 2 3]
 	fmt.Println("slice12 =", slice12) // [1 2 3 0 0]
 
+	// string切片
+	slice13 := "123456"
+	slice14 := slice13[2:]
+	fmt.Println("slice14 =", slice14) // [3 4 5 6]
+
+	slice15 := []byte(slice13) // 如果处理中文则为[]rune
+	slice15[0] = '9'
+	slice16 := string(slice15)
+	fmt.Println("slice16 =", slice16) // [9 2 3 4 5 6]
 }
