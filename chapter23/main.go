@@ -8,4 +8,11 @@ func main() {
 	a["key"] = "123"
 	fmt.Println(a)
 
+	var b = make(map[string]string)
+	b["key"] = "123"
+	fmt.Println(b)
+
+	var c = map[string]string{"key": "123"}
+	fmt.Println(c)
+
 }
