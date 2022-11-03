@@ -29,4 +29,12 @@ func main() {
 	c = make(map[string]string)
 	fmt.Println(c)
 
+	// map遍历
+	c["key01"] = "1"
+	c["key02"] = "2"
+	c["key03"] = "3"
+
+	for k, v := range c {
+		fmt.Printf("k = %v, v = %v\n", k, v)
+	}
 }
