@@ -37,4 +37,6 @@ func main() {
 	for k, v := range c {
 		fmt.Printf("k = %v, v = %v\n", k, v)
 	}
+
+	fmt.Println("C Map长度为：", len(c))
 }
