@@ -16,8 +16,17 @@ func main() {
 		monsters[1] = make(map[string]string, 2)
 		monsters[1]["name"] = "玉兔"
 		monsters[1]["age"] = "200"
-
 	}
 
 	fmt.Println(monsters)
+
+	newMonsters := map[string]string{
+		"name": "new M",
+		"age":  "100",
+	}
+
+	monsters = append(monsters, newMonsters)
+
+	fmt.Println(monsters)
+
 }
