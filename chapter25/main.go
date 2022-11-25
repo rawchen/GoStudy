@@ -46,4 +46,6 @@ func main() {
 		fmt.Printf("学生地址是：%v \n", v.Address)
 	}
 
+	fmt.Printf("student1的地址=%p\n", &student1) // 0xc00007e570
+
 }
