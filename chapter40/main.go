@@ -13,10 +13,11 @@ func main() {
 	var point Point = Point{1, 2}
 	a = point
 
+	var b Point
+
 	// 不可以
 	// b = a
 
-	var b Point
 	b = a.(Point)
 
 	fmt.Println(b)
