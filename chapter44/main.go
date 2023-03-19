@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -13,6 +15,11 @@ func main() {
 		return
 	}
 	fmt.Println(exists)
+
+	_, err = CopyFile("E:/test.txt", "D:/test.txt")
+	if err != nil {
+		fmt.Println("拷贝完成！")
+	}
 }
 
 func PathExists(path string) (bool, error) {
@@ -25,4 +32,23 @@ func PathExists(path string) (bool, error) {
 		return false, nil
 	}
 	return false, nil
+}
+
+func CopyFile(dstFileName string, srcFileName string) (written int64, err error) {
+	srcFile, err := os.Open(srcFileName)
+	if err != nil {
+		fmt.Printf("open file err = %v\n", err)
+	}
+	defer srcFile.Close()
+	reader := bufio.NewReader(srcFile)
+
+	dstFile, err := os.OpenFile(dstFileName, os.O_WRONLY|os.O_CREATE, 0666)
+	if err != nil {
+		fmt.Printf("open file err=%v\n", err)
+		return
+	}
+
+	writer := bufio.NewWriter(dstFile)
+	defer dstFile.Close()
+	return io.Copy(writer, reader)
 }
