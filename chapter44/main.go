@@ -17,8 +17,10 @@ func main() {
 	fmt.Println(exists)
 
 	_, err = CopyFile("E:/test.txt", "D:/test.txt")
-	if err != nil {
+	if err == nil {
 		fmt.Println("拷贝完成！")
+	} else {
+		fmt.Printf("拷贝错误 err = %v\n", err)
 	}
 }
 
