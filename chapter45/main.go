@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 )
@@ -11,4 +12,11 @@ func main() {
 	for i, v := range os.Args {
 		fmt.Printf("args[%v]=%v\n", i, v)
 	}
+
+	// go main.go -u root
+	var user string
+	flag.StringVar(&user, "u", "", "用户名。默认为空")
+	flag.Parse()
+
+	fmt.Printf("user=%v", user)
 }
