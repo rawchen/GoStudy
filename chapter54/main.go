@@ -37,6 +37,8 @@ func main() {
 
 	go writeData(intChan)
 	go readData(intChan, exitChan)
+	// 如果注掉以上读数据线程，则会在intChan发生阻塞，出现dead lock
+
 	//time.Sleep(time.Second * 10)
 
 	//for {
