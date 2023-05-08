@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-// 多线程求1-10000内多少素数
+// 多线程求1-8000内多少素数
 func main() {
 	intChan := make(chan int, 1000)   // 源
 	primeChan := make(chan int, 2000) // 结果
-	exitChan := make(chan int, 2000)  // 退出标识
+	exitChan := make(chan bool, 2000) // 退出标识
 
-	go putNum()
+	go putNum(intChan)
 
 	for i := 0; i < 4; i++ {
 		go primeNum(intChan, primeChan, exitChan)
@@ -22,19 +22,21 @@ func main() {
 		close(primeChan)
 	}()
 
+	var count = 0
 	for {
 		res, ok := <-primeChan
 		if !ok {
 			break
 		}
-		fmt.Printf("素数=%d")
+		count++
+		fmt.Printf("素数=%d\n", res)
 	}
 
+	fmt.Printf("素数个数为=%d\n", count)
 	fmt.Println("main线程退出")
 }
 
 func primeNum(intChan chan int, primeChan chan int, exitChan chan bool) {
-	var num int
 	var flag bool
 	for {
 		num, ok := <-intChan
@@ -59,4 +61,12 @@ func primeNum(intChan chan int, primeChan chan int, exitChan chan bool) {
 	fmt.Println("有一个primeNum协程因为取不到数据退出")
 	// 还不能关闭primeChan，向exitChan写入true
 	exitChan <- true
+}
+
+// 向intChan放入1-8000个数
+func putNum(intChan chan int) {
+	for i := 0; i <= 8000; i++ {
+		intChan <- i
+	}
+	close(intChan)
 }
