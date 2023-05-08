@@ -1,14 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-// 多线程求1-8000内多少素数
+// 多线程求1-x内多少素数
+// 8000 	44.1836ms
+// 50000 	209.0029ms
 func main() {
-	intChan := make(chan int, 1000)   // 源
-	primeChan := make(chan int, 2000) // 结果
-	exitChan := make(chan bool, 2000) // 退出标识
+	var x = 50000
+	bT := time.Now()
 
-	go putNum(intChan)
+	intChan := make(chan int, x)       // 源
+	primeChan := make(chan int, 10000) // 结果
+	exitChan := make(chan bool, 4)     // 退出标识
+
+	go putNum(intChan, x)
 
 	for i := 0; i < 4; i++ {
 		go primeNum(intChan, primeChan, exitChan)
@@ -34,6 +42,9 @@ func main() {
 
 	fmt.Printf("素数个数为=%d\n", count)
 	fmt.Println("main线程退出")
+
+	eT := time.Since(bT)
+	fmt.Println("Run time: ", eT)
 }
 
 func primeNum(intChan chan int, primeChan chan int, exitChan chan bool) {
@@ -63,9 +74,9 @@ func primeNum(intChan chan int, primeChan chan int, exitChan chan bool) {
 	exitChan <- true
 }
 
-// 向intChan放入1-8000个数
-func putNum(intChan chan int) {
-	for i := 0; i <= 8000; i++ {
+// 向intChan放数据
+func putNum(intChan chan int, x int) {
+	for i := 0; i <= x; i++ {
 		intChan <- i
 	}
 	close(intChan)
